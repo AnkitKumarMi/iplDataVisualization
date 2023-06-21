@@ -1,25 +1,18 @@
-"""
-URL configuration for IPL project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
-from django.urls import path,include
-from django.conf import settings
-
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('WebApp.urls')),
+    path("", views.Home, name="home"),
+    path('matchesps', views.matches_per_season_charts, name='matches_ps'),
+    path('winsperseason', views.wins_per_season_charts, name='wins_ps'),
+    path('extraruns', views.extra_runs_charts, name='extra_runs'),
+    path('economy', views.economy_charts, name='economy'),
+    path('batting_average', views.batting_average_charts, name='batting_avg'),
+    path("json/matchesps/", views.matches_per_season, name="matches"),
+    path("json/winsperseason/", views.wins_per_season, name="wins"),
+    path("json/extraruns/", views.extra_runs, name="extra"),
+    path("json/economy/", views.economy, name="econ"),
+    path("json/batting_average/", views.batting_average, name="batting_average"),
+
 ]
